@@ -1,0 +1,19 @@
+name: Deploy to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3.8.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: main # 发布到 main 分支
+        publish_dir: ./files
